@@ -2,49 +2,49 @@ import { HandlerContext } from "$fresh/server.ts";
 // import Authenticator from 'npm:claude-api@1.0.4';
 // import chalk from "npm:chalk@5";
 
-async function askCluadeAPi(question, conversationId) {
-  const token = Deno.env.get("token");
-  const bot = Deno.env.get("bot");
-  // 频道的名字(可以是不存在的频道, 如果是已存在的频道必须添加了 Claude)
-  const chatId = Deno.env.get("chatId");
+// async function askCluadeAPi(question, conversationId) {
+//   const token = Deno.env.get("token");
+//   const bot = Deno.env.get("bot");
+//   // 频道的名字(可以是不存在的频道, 如果是已存在的频道必须添加了 Claude)
+//   const chatId = Deno.env.get("chatId");
 
-  // 初始化claude
-  const claudeClient = new Authenticator(token, bot);
+//   // 初始化claude
+//   const claudeClient = new Authenticator(token, bot);
 
-  // 创建频道并返回房间ID：channel
-  const channel = await claudeClient.newChannel(chatId);
+//   // 创建频道并返回房间ID：channel
+//   const channel = await claudeClient.newChannel(chatId);
 
-  let result;
-  if (conversationId) {
-    result = await claudeClient.sendMessage({
-      text: question,
-      channel,
-      conversationId,
-      onMessage: (originalMessage) => {
-        console.log('loading', originalMessage);
-      },
-    });
-  } else {
-    result = await claudeClient.sendMessage({
-      text: question,
-      channel,
-      onMessage: (originalMessage) => {
-        // console.log("loading", originalMessage)
-        console.log('loading', originalMessage);
-      },
-    });
-  }
-  console.log('success', result);
+//   let result;
+//   if (conversationId) {
+//     result = await claudeClient.sendMessage({
+//       text: question,
+//       channel,
+//       conversationId,
+//       onMessage: (originalMessage) => {
+//         console.log('loading', originalMessage);
+//       },
+//     });
+//   } else {
+//     result = await claudeClient.sendMessage({
+//       text: question,
+//       channel,
+//       onMessage: (originalMessage) => {
+//         // console.log("loading", originalMessage)
+//         console.log('loading', originalMessage);
+//       },
+//     });
+//   }
+//   console.log('success', result);
 
-  return {
-    status: 0,
-    data: {
-      text: result.text,
-      conversationId: result.conversationId,
-    },
-    message: 'success',
-  };
-}
+//   return {
+//     status: 0,
+//     data: {
+//       text: result.text,
+//       conversationId: result.conversationId,
+//     },
+//     message: 'success',
+//   };
+// }
 
 export const handler = (_req: Request, _ctx: HandlerContext): Response => {
   // const url = new URL(_req.url);
