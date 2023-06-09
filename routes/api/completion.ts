@@ -64,10 +64,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Response => 
   //   };
   // }
 
-  const api = Deno.env.get("api");
-  console.log('api', api);
-
-  const response = (await fetch(`${api}/completion?question=${encodeURIComponent(String(question))}`));
+  const response = (await fetch(`https://jxzptkyr84.hk.aircode.run/completion?question=${encodeURIComponent(String(question))}`));
   const json = await response.json();
 
   return new Response(JSON.stringify(json));
