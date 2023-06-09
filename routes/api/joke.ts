@@ -1,5 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
-import Authenticator from 'npm:claude-api@1.0.4';
+import Authenticator from 'npm:claude-api@1.0';
 
 async function askCluadeAPi(question, conversationId) {
   const token = Deno.env.get("token");
