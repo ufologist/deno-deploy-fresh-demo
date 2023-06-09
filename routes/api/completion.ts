@@ -64,7 +64,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Response => 
   //   };
   // }
 
-  const response = (await fetch(`${Deno.env.get("chatId")}/completion?question=${encodeURIComponent(String(question))}`));
+  const response = (await fetch(`${Deno.env.get("api")}/completion?question=${encodeURIComponent(String(question))}`));
   const json = await response.json();
 
   return new Response(JSON.stringify(json));
