@@ -19,6 +19,9 @@ export const handler = (_req: Request, _ctx: HandlerContext): Response => {
   const body = JOKES[randomIndex];
   return new Response(JSON.stringify({
     status: 0,
-    data: body,
+    data: {
+      text: body,
+      env: Deno.env.get("chatId"),
+    },
   }));
 };
