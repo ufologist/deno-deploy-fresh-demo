@@ -1,12 +1,12 @@
 import { HandlerContext } from "$fresh/server.ts";
+import { Authenticator } from 'npm:claude-api-slack@1.0.28';
 
 async function askCluadeAPi(question, conversationId) {
   const token = Deno.env.get("token");
   const bot = Deno.env.get("bot");
   // 频道的名字(可以是不存在的频道, 如果是已存在的频道必须添加了 Claude)
   const chatId = Deno.env.get("chatId");
-
-  const { Authenticator } = await import('npm:claude-api-slack@1.0.28');
+  
   // 初始化claude
   const claudeClient = new Authenticator(token, bot);
 
