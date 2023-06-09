@@ -14,14 +14,18 @@ const JOKES = [
   "An SEO expert walked into a bar, pub, inn, tavern, hostelry, public house.",
 ];
 
-export const handler = (_req: Request, _ctx: HandlerContext): Response => {
+export const handler = async (_req: Request, _ctx: HandlerContext): Response => {
+  const url = new URL(_req.url);
+  console.log("Path:", url.pathname);
+  console.log("Query parameters:", url.searchParams);
+  const question = url.searchParams.get('question');
+  const conversationId = url.searchParams.get('conversationId');
+
   const randomIndex = Math.floor(Math.random() * JOKES.length);
   const body = JOKES[randomIndex];
-  return new Response(JSON.stringify({
-    status: 0,
-    data: {
-      text: body,
-      env: Deno.env.get("chatId"),
-    },
-  }));
+
+  const response = (await fetch(`https://jxzptkyr84.hk.aircode.run/completion?question=${encodeURIComponent(String(question))}`));
+  const json = await response.json();
+
+  return new Response(JSON.stringify(json));
 };
