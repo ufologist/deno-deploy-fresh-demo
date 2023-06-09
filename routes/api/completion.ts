@@ -64,8 +64,8 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Response => 
   //   };
   // }
 
-  const response = (await fetch(`https://jxzptkyr84.hk.aircode.run/completion?question=${encodeURIComponent(String(question))}`));
-  const json = await response.json();
+  // const response = (await fetch(`https://jxzptkyr84.hk.aircode.run/completion?question=${encodeURIComponent(String(question))}`));
+  // const json = await response.json();
 
-  return new Response(JSON.stringify(json));
+  return new Response(JSON.stringify(result));
 };
