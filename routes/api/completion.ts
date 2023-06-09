@@ -47,11 +47,11 @@ async function askCluadeAPi(question, conversationId) {
 }
 
 export const handler = (_req: Request, _ctx: HandlerContext): Response => {
-  const url = new URL(_req.url);
-  console.log("Path:", url.pathname);
-  console.log("Query parameters:", url.searchParams);
-  const question = url.searchParams.get('question');
-  const conversationId = url.searchParams.get('conversationId');
+  // const url = new URL(_req.url);
+  // console.log("Path:", url.pathname);
+  // console.log("Query parameters:", url.searchParams);
+  // const question = url.searchParams.get('question');
+  // const conversationId = url.searchParams.get('conversationId');
 
   let result = {};
   // try {
