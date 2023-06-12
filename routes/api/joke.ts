@@ -1,7 +1,9 @@
 import { HandlerContext } from "$fresh/server.ts";
 // import Authenticator from 'npm:claude-api@1.0.4';
 
-import chalk from "npm:chalk@5";
+// deno deploy 暂不支持 npm 包
+// https://github.com/denoland/deploy_feedback/issues/314
+// import chalk from "npm:chalk@5";
 
 // async function askCluadeAPi(question, conversationId) {
 //   const token = Deno.env.get("token");
@@ -53,8 +55,6 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Response => 
   const conversationId = formData.get('conversationId');
   console.log('question', question);
   console.log('conversationId', conversationId);
-
-  console.log(chalk.green("Hello!"));
 
   let result = {};
   // try {
